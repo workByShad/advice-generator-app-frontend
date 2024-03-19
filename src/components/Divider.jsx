@@ -1,5 +1,7 @@
+import desktopDivider from "../assets/images/pattern-divider-desktop.svg";
+
 const Divider = () => {
-  return <div>Divider</div>;
+  return <img src={desktopDivider} />;
 };
 
 export default Divider;

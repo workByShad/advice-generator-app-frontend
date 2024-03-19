@@ -1,9 +1,5 @@
 const AdviceID = () => {
-  return (
-    <>
-      <p>Advice #ID</p>
-    </>
-  );
+  return <h1 className="advice-id">Advice #000</h1>;
 };
 
 export default AdviceID;
