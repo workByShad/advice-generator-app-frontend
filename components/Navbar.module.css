@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 15vw;
+  height: 10vh;
+  /* border: thick solid red; */
+}
+
+.p {
+  font-size: 0.7rem;
+}

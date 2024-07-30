@@ -1,0 +1,14 @@
+.dice {
+  background-color: hsl(150, 100%, 66%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+
+  position: absolute;
+  margin-top: 42vh;
+}

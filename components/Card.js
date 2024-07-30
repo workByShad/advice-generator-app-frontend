@@ -1,13 +1,12 @@
-import AdviceID from "./AdviceID";
-import AdviceText from "./AdviceText";
+import AdviceData from "./AdviceData";
 import Divider from "./Divider";
 import Dice from "./Dice";
+import styles from "./Card.module.css";
 
 const Card = () => {
   return (
-    <div className="border card">
-      <AdviceID />
-      <AdviceText />
+    <div className={`border ${styles.card}`}>
+      <AdviceData />
       <Divider />
       <Dice />
     </div>

@@ -1,0 +1,9 @@
+.adviceId {
+  color: hsl(150, 100%, 66%);
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+}
+
+.adviceText {
+  color: hsl(193, 38%, 86%);
+}

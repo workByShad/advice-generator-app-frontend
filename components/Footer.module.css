@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 25vw;
+  height: 7vh;
+
+  /* border: thick solid red; */
+}
+
+.p {
+  font-size: 0.7rem;
+}
