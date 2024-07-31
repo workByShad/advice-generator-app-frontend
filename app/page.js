@@ -1,10 +1,16 @@
-import Card from "@/components/Card";
-import styles from "./page.module.css";
+import Card from "@/components/ui/Card";
+import AdviceData from "../components/AdviceData";
+import Divider from "../components/Divider";
+import Dice from "../components/Dice";
 
 export default function Home() {
   return (
     <main>
-      <Card />
+      <Card>
+        <AdviceData />
+        <Divider />
+        <Dice />
+      </Card>
     </main>
   );
 }
