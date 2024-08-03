@@ -1,18 +1,10 @@
 "use client";
-import { submitHandler } from "@/utils/utils";
 import styles from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ children, handler }) => {
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
-      <label htmlFor="adviceText">Enter your advice:</label>
-      <textarea
-        className={styles.text}
-        id="adviceText"
-        name="adviceText"
-        rows="3"
-        cols="20"
-      ></textarea>
+    <form className={styles.form} onSubmit={handler}>
+      {children}
       <button className={styles.text} type="submit">
         Submit
       </button>

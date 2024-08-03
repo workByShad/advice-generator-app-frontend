@@ -1,12 +1,24 @@
+"use client";
 import Card from "@/components/ui/Card";
 import Form from "@/components/ui/Form";
+import styles from "./page.module.css";
+import { adviceSubmissionHandler } from "@/utils/utils";
 
 export default function Contribute() {
   return (
     <main>
       <h1>add an advice</h1>
       <Card>
-        <Form />
+        <Form handler={adviceSubmissionHandler}>
+          <label htmlFor="adviceText">Enter your advice:</label>
+          <textarea
+            className={styles.text}
+            id="adviceText"
+            name="adviceText"
+            rows="3"
+            cols="20"
+          ></textarea>
+        </Form>
       </Card>
     </main>
   );
