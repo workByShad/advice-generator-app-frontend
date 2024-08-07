@@ -1,17 +1,17 @@
+import { getAllAdvice } from "@/utils/firestoreUtils";
 import styles from "./AdviceData.module.css";
 import { acquireData, getRandomInt } from "@/utils/utils";
 
 const AdviceID = async () => {
-  const allAdvice = await acquireData();
+  const allAdvice = await getAllAdvice();
 
-  if (allAdvice && allAdvice.documents && allAdvice.documents.length > 0) {
-    const randomAdvice =
-      allAdvice.documents[getRandomInt(allAdvice.documents.length)];
+  if (allAdvice?.length > 0) {
+    const randomAdvice = allAdvice[getRandomInt(allAdvice.length)];
 
     return (
       <>
-        <h1 className={styles.adviceId}>Advice #{randomAdvice.id}</h1>
-        <p className={styles.adviceText}>"{randomAdvice.data.adviceText}"</p>
+        <h1 className={styles.adviceId}>Advice #{randomAdvice[0]}</h1>
+        <p className={styles.adviceText}>"{randomAdvice[1].adviceText}"</p>
       </>
     );
   } else {

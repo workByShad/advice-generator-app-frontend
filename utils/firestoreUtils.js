@@ -11,6 +11,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+// CREATE
+
 export const addAdvice = async () => {
   const data = {
     adviceText: "advice from function",
@@ -24,11 +26,16 @@ export const addAdvice = async () => {
   }
 };
 
+// READ
 export const getAllAdvice = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "advice"));
 
-    console.log("Data acquired:", querySnapshot);
+    const allAdvice = querySnapshot.docs.map((doc) => [doc.id, doc.data()]);
+
+    // console.log("Data acquired:", allAdvice);
+
+    return allAdvice;
   } catch (e) {
     console.error("Error getting documents: ", e);
   }
@@ -68,6 +75,8 @@ export const getAllAdviceByUser = async () => {
   }
 };
 
+// UPDATE
+
 export const updateAdvice = async () => {
   const adviceId = "from client side";
   const updatedAdviceText = "updated advice text";
@@ -84,6 +93,8 @@ export const updateAdvice = async () => {
     console.error("Error updating document: ", e);
   }
 };
+
+// DELETE
 
 export const deleteAdvice = async () => {
   const adviceId = "from client side";
