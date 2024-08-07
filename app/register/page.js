@@ -1,14 +1,14 @@
 "use client";
 import Card from "@/components/ui/Card";
 import Form from "@/components/ui/Form";
-import { createNewUser } from "@/utils/utils";
+import { doNothing } from "@/utils/utils";
 
 export default function Register() {
   return (
     <main>
       <h1>Register</h1>
       <Card>
-        <Form handler={createNewUser}>
+        <Form handler={doNothing}>
           <label>
             Username:{" "}
             <input

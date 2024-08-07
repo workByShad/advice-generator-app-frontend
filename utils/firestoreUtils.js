@@ -13,9 +13,14 @@ import {
 
 // CREATE
 
-export const addAdvice = async () => {
+export const addAdvice = async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+  const adviceText = form.adviceText.value;
+
   const data = {
-    adviceText: "advice from function",
+    adviceText,
   };
 
   try {

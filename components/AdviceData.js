@@ -1,6 +1,6 @@
 import { getAllAdvice } from "@/utils/firestoreUtils";
 import styles from "./AdviceData.module.css";
-import { acquireData, getRandomInt } from "@/utils/utils";
+import { getRandomInt } from "@/utils/utils";
 
 const AdviceID = async () => {
   const allAdvice = await getAllAdvice();
