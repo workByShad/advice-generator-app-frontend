@@ -32,6 +32,7 @@ export const addAdvice = async (e) => {
 };
 
 // READ
+
 export const getAllAdvice = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "advice"));
