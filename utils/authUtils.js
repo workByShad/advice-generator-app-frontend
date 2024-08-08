@@ -37,13 +37,23 @@ export const createNewUser = async (e) => {
 export const getCurrentUser = async (e) => {
   e.preventDefault();
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
+  const user = auth.currentUser;
 
-      console.log(`User is signed in: ${uid}`);
-    } else {
-      console.log("No user is signed in.");
-    }
-  });
+  if (user) {
+    const uid = user.uid;
+
+    console.log(`User is signed in: ${uid}`);
+  } else {
+    console.log("No user is signed in.");
+  }
+};
+
+export const isLoggedIn = async () => {
+  const user = auth.currentUser;
+
+  return !!user;
+};
+
+export const signOutUser = async () => {
+  console.log("sign out func");
 };

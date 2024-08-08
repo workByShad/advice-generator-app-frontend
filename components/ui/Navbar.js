@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Navbar.module.css";
+import ShowLogin from "./ShowLogin";
 
 const Navbar = () => {
   return (
@@ -15,16 +16,7 @@ const Navbar = () => {
             Contribute
           </Link>
         </li>
-        <li>
-          <Link href="/register" className={styles.p}>
-            Register
-          </Link>
-        </li>
-        <li>
-          <Link href="/login" className={styles.p}>
-            Login
-          </Link>
-        </li>
+        <ShowLogin />
       </ul>
     </nav>
   );
