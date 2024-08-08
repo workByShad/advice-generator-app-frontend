@@ -1,6 +1,7 @@
 "use client";
 import Card from "@/components/ui/Card";
 import Form from "@/components/ui/Form";
+import { createNewUser, getCurrentUser } from "@/utils/authUtils";
 import { doNothing } from "@/utils/utils";
 
 export default function Register() {
@@ -8,7 +9,7 @@ export default function Register() {
     <main>
       <h1>Register</h1>
       <Card>
-        <Form handler={doNothing}>
+        <Form handler={createNewUser}>
           <label>
             Username:{" "}
             <input
@@ -41,6 +42,8 @@ export default function Register() {
             />
           </label>
         </Form>
+
+        <button onClick={getCurrentUser}>Get current user</button>
       </Card>
     </main>
   );
