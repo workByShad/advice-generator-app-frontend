@@ -1,7 +1,7 @@
 import { auth } from "@/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 
@@ -34,7 +34,7 @@ export const createNewUser = async (e) => {
   }
 };
 
-export const getCurrentUser = async (e) => {
+export const getCurrentUser = (e) => {
   e.preventDefault();
 
   const user = auth.currentUser;
@@ -48,12 +48,12 @@ export const getCurrentUser = async (e) => {
   }
 };
 
-export const isLoggedIn = async () => {
-  const user = auth.currentUser;
-
-  return !!user;
-};
-
 export const signOutUser = async () => {
-  console.log("sign out func");
+  try {
+    await signOut(auth);
+
+    console.log("sign out successful.");
+  } catch (error) {
+    console.log(`sign out failed: ${error}`);
+  }
 };

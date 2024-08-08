@@ -1,11 +1,25 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./ShowLogin.module.css";
 
-import { isLoggedIn, signOutUser } from "@/utils/authUtils";
+import { signOutUser } from "@/utils/authUtils";
+import { auth } from "@/firebaseConfig";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 
 const ShowLogin = () => {
-  const loggedIn = isLoggedIn();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Calling onAuthStateChanged returns an 'Unsubscribe' function
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setLoggedIn(!!user);
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
   if (loggedIn) {
     return (

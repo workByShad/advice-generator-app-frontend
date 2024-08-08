@@ -3,6 +3,7 @@ import Card from "@/components/ui/Card";
 import Form from "@/components/ui/Form";
 import styles from "./page.module.css";
 import { addAdvice } from "@/utils/firestoreUtils";
+import { getCurrentUser } from "@/utils/authUtils";
 
 export default function Contribute() {
   return (
@@ -19,6 +20,7 @@ export default function Contribute() {
             cols="20"
           ></textarea>
         </Form>
+        <button onClick={getCurrentUser}>Get current user</button>
       </Card>
     </main>
   );
