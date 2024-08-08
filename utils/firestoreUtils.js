@@ -39,8 +39,6 @@ export const getAllAdvice = async () => {
 
     const allAdvice = querySnapshot.docs.map((doc) => [doc.id, doc.data()]);
 
-    // console.log("Data acquired:", allAdvice);
-
     return allAdvice;
   } catch (e) {
     console.error("Error getting documents: ", e);
