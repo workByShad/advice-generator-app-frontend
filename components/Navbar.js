@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./Navbar.module.css";
-import ShowLogin from "./ShowLogin";
 
 const Navbar = () => {
   return (
@@ -16,7 +15,11 @@ const Navbar = () => {
             Contribute
           </Link>
         </li>
-        <ShowLogin />
+        <li>
+          <Link href="/dashboard" className={styles.p}>
+            Dashboard
+          </Link>
+        </li>
       </ul>
     </nav>
   );

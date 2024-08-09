@@ -1,6 +1,7 @@
 import { auth } from "@/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -26,6 +27,30 @@ export const createNewUser = async (e) => {
     });
 
     console.log("User created:", user);
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    console.error(`Error [${errorCode}]: ${errorMessage}`);
+  }
+};
+
+export const logInUser = async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      form.email.value,
+      form.password.value
+    );
+
+    // Signed in
+    const user = userCredential.user;
+
+    console.log("User logged in:", user);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;

@@ -6,7 +6,7 @@ const Form = ({ children, handler }) => {
     <form className={styles.form} onSubmit={handler}>
       {children}
       <button className={styles.text} type="submit">
-        Submit
+        Submit{/* create account or login */}
       </button>
     </form>
   );

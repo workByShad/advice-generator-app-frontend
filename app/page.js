@@ -1,4 +1,4 @@
-import Card from "@/components/ui/Card";
+import Card from "@/components/Card";
 import AdviceData from "../components/AdviceData";
 import Divider from "../components/Divider";
 import Dice from "../components/Dice";
