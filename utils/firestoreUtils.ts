@@ -12,6 +12,7 @@ import {
   DocumentData,
   FirestoreError,
 } from "firebase/firestore";
+import { getCurrentUser } from "./authUtils";
 
 // CREATE
 
@@ -24,8 +25,11 @@ export const addAdvice = async (
   const adviceText = (form.elements.namedItem("adviceText") as HTMLInputElement)
     .value;
 
-  const data: { adviceText: string } = {
+  const userId = getCurrentUser();
+
+  const data: { adviceText: string; createdBy: string } = {
     adviceText,
+    createdBy: userId,
   };
 
   try {
