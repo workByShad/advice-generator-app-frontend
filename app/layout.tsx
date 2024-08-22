@@ -17,7 +17,7 @@ export default function RootLayout({
 }: RootLayoutProps): React.ReactElement {
   return (
     <html lang="en">
-      <body className="flex flex-col items-center justify-between w-screen h-screen box-border bg-[hsl(218,23%,16%)]">
+      <body className="flex flex-col items-center justify-between w-screen h-screen box-border bg-gray-800">
         <Navbar />
         {children}
         <Footer />

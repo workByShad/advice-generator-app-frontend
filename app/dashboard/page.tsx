@@ -26,8 +26,6 @@ export default function Dashboard(): React.ReactElement {
   } else {
     return (
       <main>
-        <h1>Dashboard</h1>
-
         {isRegistering ? (
           <Register toggle={() => setIsRegistering(false)} />
         ) : (

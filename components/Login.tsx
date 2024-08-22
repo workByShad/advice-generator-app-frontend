@@ -9,10 +9,9 @@ interface FormProps {
 
 const Login: React.FC<FormProps> = ({ toggle }) => {
   return (
-    <>
-      <h2>Log In</h2>
-      <Card>
-        <p>
+    <Card>
+      <div className="flex flex-col items-center justify-evenly w-full h-full ">
+        <p className="text-gray-200 text-xl">
           Don&apos;t have an account? <span onClick={toggle}>Sign up</span>
         </p>
         <Form handler={logInUser}>
@@ -23,6 +22,7 @@ const Login: React.FC<FormProps> = ({ toggle }) => {
             required
             maxLength={20}
             size={15}
+            className="w-[50%] rounded-md p-2"
           />
 
           <input
@@ -33,11 +33,12 @@ const Login: React.FC<FormProps> = ({ toggle }) => {
             minLength={6}
             maxLength={15}
             size={15}
+            className="w-[50%] rounded-md p-2"
           />
         </Form>
-        <p>Reset Password?</p>
-      </Card>
-    </>
+        <p className="text-gray-200 text-sm">Reset Password?</p>
+      </div>
+    </Card>
   );
 };
 

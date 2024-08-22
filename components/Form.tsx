@@ -8,12 +8,15 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ children, handler }) => {
   return (
     <form
-      className="flex flex-col items-center justify-around h-full w-full"
+      className="flex flex-col items-center justify-between h-[55%] w-full"
       onSubmit={handler}
     >
       {children}
-      <button className="text-black" type="submit">
-        Submit{/* create account or login */}
+      <button
+        className="text-lg py-2 px-2 rounded text-gray-200 bg-gray-800 hover:bg-gray-600 hover:text-gray-100 transition-all"
+        type="submit"
+      >
+        Submit
       </button>
     </form>
   );

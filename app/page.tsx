@@ -39,12 +39,16 @@ export default function Home(): React.ReactElement {
   }, []);
 
   return (
-    <main className="border-4 border-red-600 box-border">
+    <main>
       <Card>
         {isLoading ? (
           <>
-            <p>Fetching Advice</p>
-            <p>Loading...</p>
+            <p className="text-gray-200 font-semibold text-2xl text-center">
+              Fetching Advice
+            </p>
+            <p className="text-gray-200 font-semibold text-2xl text-center">
+              Loading...
+            </p>
           </>
         ) : (
           <AdviceData randomAdvice={randomAdvice} />

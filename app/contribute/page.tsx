@@ -24,12 +24,14 @@ export default function Contribute(): React.ReactElement {
   if (loggedIn) {
     return (
       <main>
-        <h1>add an advice</h1>
         <Card>
+          <h1 className="text-gray-200 text-3xl">Add an advice</h1>
           <Form handler={addAdvice}>
-            <label htmlFor="adviceText">Enter your advice:</label>
+            <label htmlFor="adviceText" className="text-gray-200 text-xl">
+              Enter your advice:
+            </label>
             <textarea
-              className="rounded-lg w-[30vw] h-[15vh] resize-none"
+              className="rounded-lg w-[25vw] h-[10vh] p-2 resize-none"
               id="adviceText"
               name="adviceText"
             ></textarea>
