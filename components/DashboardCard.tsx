@@ -1,5 +1,5 @@
-import Link from "next/link";
 import DashboardBox from "./DashboardBox";
+import { signOutUser } from "@/utils/authUtils";
 
 const DashboardCard: React.FC = () => {
   return (
@@ -23,6 +23,13 @@ const DashboardCard: React.FC = () => {
           <DashboardBox option="profile" />
         </div>
       </div>
+
+      <button
+        onClick={signOutUser}
+        className="text-lg py-2 px-2 rounded text-gray-200 bg-gray-800 hover:bg-gray-600 hover:text-gray-100 transition-colors"
+      >
+        sign out
+      </button>
     </main>
   );
 };

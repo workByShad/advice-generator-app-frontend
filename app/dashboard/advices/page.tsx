@@ -1,27 +1,11 @@
 "use client";
 import Card from "@/components/Card";
-import Form from "@/components/Form";
-import { addAdvice } from "@/utils/firestoreUtils";
-import { getCurrentUser } from "@/utils/authUtils";
-
-import { auth } from "@/firebaseConfig";
-import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import useFetchUser from "@/hooks/useFetchUser";
 
 export default function Advices(): React.ReactElement {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const curUser = useFetchUser();
 
-  useEffect(() => {
-    // Calling onAuthStateChanged returns an 'Unsubscribe' function
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setLoggedIn(!!user);
-    });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, []);
-
-  if (loggedIn) {
+  if (curUser) {
     return (
       <main>
         <Card>

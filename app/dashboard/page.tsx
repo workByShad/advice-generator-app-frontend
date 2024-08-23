@@ -1,27 +1,16 @@
 "use client";
 import Register from "@/components/Register";
 import Login from "@/components/Login";
-
-import { auth } from "@/firebaseConfig";
-import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
 import DashboardCard from "@/components/DashboardCard";
+import useFetchUser from "@/hooks/useFetchUser";
 
 export default function Dashboard(): React.ReactElement {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
 
-  useEffect(() => {
-    // Calling onAuthStateChanged returns an 'Unsubscribe' function
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setLoggedIn(!!user);
-    });
+  const curUser = useFetchUser();
 
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, []);
-
-  if (loggedIn) {
+  if (curUser) {
     return <DashboardCard />;
   } else {
     return (
