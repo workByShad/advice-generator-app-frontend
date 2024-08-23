@@ -6,6 +6,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 
+// CREATE
 export const createNewUser = async (
   e: React.FormEvent<HTMLFormElement>
 ): Promise<void> => {
@@ -37,6 +38,24 @@ export const createNewUser = async (
   }
 };
 
+// GET
+export const getCurrentUser = (): string => {
+  const user = auth.currentUser;
+
+  if (user) {
+    const uid = user.uid;
+
+    console.log(`User is signed in: ${uid}`);
+
+    return uid;
+  } else {
+    console.log("No user is signed in.");
+
+    return "";
+  }
+};
+
+// LOG IN
 export const logInUser = async (
   e: React.FormEvent<HTMLFormElement>
 ): Promise<void> => {
@@ -63,6 +82,7 @@ export const logInUser = async (
   }
 };
 
+// LOG OUT
 export const signOutUser = async (): Promise<void> => {
   try {
     await signOut(auth);
