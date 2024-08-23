@@ -79,19 +79,24 @@ export const getAdvice = async (): Promise<void> => {
   }
 };
 
-export const getAllAdviceByUser = async (): Promise<void> => {
-  const userId = "userId";
-
+export const getAllAdviceByUser = async (
+  userId: string
+): Promise<null | [string, DocumentData][]> => {
   const q = query(collection(db, "advice"), where("createdBy", "==", userId));
 
   try {
     const querySnapshot = await getDocs(q);
 
+    const advices: [string, DocumentData][] = [];
+
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
+      advices.push([doc.id, doc.data()]);
     });
+
+    return advices;
   } catch (e: any) {
     console.error("Error getting document: ", e);
+    return null;
   }
 };
 

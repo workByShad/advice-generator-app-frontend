@@ -1,4 +1,4 @@
-import DashboardBox from "./DashboardBox";
+import Link from "next/link";
 import { signOutUser } from "@/utils/authUtils";
 
 const DashboardCard: React.FC = () => {
@@ -15,12 +15,26 @@ const DashboardCard: React.FC = () => {
       <div className="flex flex-row justify-evenly items-center w-[60vw] h-[50vh] border-4 border-red-500">
         <div className="flex flex-col justify-evenly items-center w-[15vw] h-[25vh] border-4 border-red-500">
           <h3 className="text-gray-200">Your Advices:</h3>
-          <DashboardBox option="advices" />
+          <div className="w-[10vw] h-[10vh] border-4 border-red-500">
+            <Link
+              href="/dashboard/advices"
+              className="w-full h-full flex justify-center items-center text-gray-200 text-xl"
+            >
+              View
+            </Link>
+          </div>
         </div>
 
         <div className="flex flex-col justify-evenly items-center w-[15vw] h-[25vh] border-4 border-red-500">
           <h3 className="text-gray-200">Profile:</h3>
-          <DashboardBox option="profile" />
+          <div className="w-[10vw] h-[10vh] border-4 border-red-500">
+            <Link
+              href="/dashboard/profile"
+              className="w-full h-full flex justify-center items-center text-gray-200 text-xl"
+            >
+              View
+            </Link>
+          </div>
         </div>
       </div>
 
