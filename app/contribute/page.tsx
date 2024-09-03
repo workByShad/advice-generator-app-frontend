@@ -3,8 +3,13 @@ import Card from "@/components/Card";
 import Form from "@/components/Form";
 import { addAdvice } from "@/utils/firestoreUtils";
 import useFetchUser from "@/hooks/useFetchUser";
+import { useState } from "react";
+import Register from "@/components/Register";
+import Login from "@/components/Login";
 
 export default function Contribute(): React.ReactElement {
+  const [isRegistering, setIsRegistering] = useState(false);
+
   const curUser = useFetchUser();
 
   if (curUser) {
@@ -28,9 +33,11 @@ export default function Contribute(): React.ReactElement {
   } else {
     return (
       <main>
-        <Card>
-          <h1>Please Log In.</h1>
-        </Card>
+        {isRegistering ? (
+          <Register toggle={() => setIsRegistering(false)} />
+        ) : (
+          <Login toggle={() => setIsRegistering(true)} />
+        )}
       </main>
     );
   }

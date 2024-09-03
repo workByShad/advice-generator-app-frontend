@@ -93,6 +93,11 @@ export const getAllAdviceByUser = async (
       advices.push([doc.id, doc.data()]);
     });
 
+    // always return either null or a non-empty array, never an empty array
+    if (advices.length == 0) {
+      return null;
+    }
+
     return advices;
   } catch (e: any) {
     console.error("Error getting document: ", e);

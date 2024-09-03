@@ -10,30 +10,40 @@ export default function Advices(): React.ReactElement {
 
   const [allAdviceByUser, setAllAdviceByUser] = useState<
     null | [string, DocumentData][]
-  >(null);
-  const [loading, setLoading] = useState(true);
+  >([]);
 
   useEffect(() => {
-    if (curUser) {
+    const fetchAdvices = async () => {
       // Fetch the advices only if the user is available
-      const fetchAdvices = async () => {
+
+      if (curUser) {
         try {
           const adviceData = await getAllAdviceByUser(curUser.uid);
           setAllAdviceByUser(adviceData);
+
+          console.log(adviceData);
         } catch (error) {
           console.error("Failed to fetch advice data:", error);
-        } finally {
-          setLoading(false);
         }
-      };
+      }
+    };
 
-      fetchAdvices();
-    } else {
-      setLoading(false);
-    }
+    fetchAdvices();
   }, [curUser]);
 
-  // const allAdviceByUser = getAllAdviceByUser(curUser?.uid);
+  const checkLoading = () => {
+    if (allAdviceByUser?.length == 0) {
+      return <p>Loading...</p>;
+    } else if (allAdviceByUser == null) {
+      return <p>No advice found.</p>;
+    } else {
+      return allAdviceByUser.map((advice) => (
+        <p className="text-gray-200 text-lg" key={advice[0]}>
+          {advice[1].adviceText}
+        </p>
+      ));
+    }
+  };
 
   if (curUser) {
     return (
@@ -41,15 +51,7 @@ export default function Advices(): React.ReactElement {
         <Card>
           <h1 className="text-gray-200 text-3xl">Your advices:</h1>
           <div className="flex flex-col items-start justify-evenly w-full h-[50%]">
-            {allAdviceByUser ? (
-              allAdviceByUser.map((advice) => (
-                <p className="text-gray-200 text-lg" key={advice[0]}>
-                  {advice[1].adviceText}
-                </p>
-              ))
-            ) : (
-              <p>No advice found.</p>
-            )}
+            {checkLoading()}
           </div>
         </Card>
       </main>
