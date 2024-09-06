@@ -18,7 +18,7 @@ import { getCurrentUser } from "./authUtils";
 
 export const addAdvice = async (
   e: React.FormEvent<HTMLFormElement>
-): Promise<void> => {
+): Promise<boolean> => {
   e.preventDefault();
 
   const form = e.target as HTMLFormElement;
@@ -35,8 +35,10 @@ export const addAdvice = async (
   try {
     const docRef = await addDoc(collection(db, "advice"), data);
     console.log("Document written with ID: ", docRef.id);
+    return true; // success
   } catch (error) {
     console.error("Error adding document: ", error);
+    return false; // failure
   }
 };
 
