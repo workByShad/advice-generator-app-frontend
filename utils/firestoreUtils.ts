@@ -108,8 +108,7 @@ export const getAllAdviceByUser = async (
 };
 
 // UPDATE
-export const updateAdvice = async (): Promise<void> => {
-  const adviceId = "from client side";
+export const updateAdvice = async (adviceId: string): Promise<void> => {
   const updatedAdviceText = "updated advice text";
 
   const adviceRef = doc(db, "advice", adviceId);
@@ -126,9 +125,7 @@ export const updateAdvice = async (): Promise<void> => {
 };
 
 // DELETE
-export const deleteAdvice = async (): Promise<void> => {
-  const adviceId = "from client side";
-
+export const deleteAdvice = async (adviceId: string): Promise<void> => {
   const adviceRef = doc(db, "advice", adviceId);
 
   try {

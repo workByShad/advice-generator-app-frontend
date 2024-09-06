@@ -1,7 +1,8 @@
 "use client";
 import Card from "@/components/Card";
+import UserAdviceItem from "@/components/UserAdviceItem";
 import useFetchUser from "@/hooks/useFetchUser";
-import { getAllAdviceByUser } from "@/utils/firestoreUtils";
+import { deleteAdvice, getAllAdviceByUser } from "@/utils/firestoreUtils";
 import { DocumentData } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -31,6 +32,22 @@ export default function Advices(): React.ReactElement {
     fetchAdvices();
   }, [curUser]);
 
+  // New function to handle deletion and update state
+  const handleDelete = async (adviceId: string) => {
+    try {
+      await deleteAdvice(adviceId); // Delete advice from Firestore
+      // Update the state by removing the deleted advice from the list
+      setAllAdviceByUser((prevAdvices) => {
+        const updatedAdvices =
+          prevAdvices?.filter(([id]) => id !== adviceId) || [];
+        // If the updated array is empty, set to null, otherwise use the updated array
+        return updatedAdvices.length > 0 ? updatedAdvices : null;
+      });
+    } catch (error) {
+      console.error("Failed to delete advice:", error);
+    }
+  };
+
   const checkLoading = () => {
     if (allAdviceByUser?.length == 0) {
       return <p>Loading...</p>;
@@ -38,9 +55,11 @@ export default function Advices(): React.ReactElement {
       return <p>No advice found.</p>;
     } else {
       return allAdviceByUser.map((advice) => (
-        <p className="text-gray-200 text-lg" key={advice[0]}>
-          {advice[1].adviceText}
-        </p>
+        <UserAdviceItem
+          key={advice[0]}
+          advice={advice}
+          onDelete={handleDelete}
+        />
       ));
     }
   };
