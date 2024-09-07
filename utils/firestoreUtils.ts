@@ -33,6 +33,13 @@ export const addAdvice = async (
   };
 
   try {
+    const count = await getAllAdviceByUser(userId);
+
+    if (count && count.length >= 3) {
+      console.log("You already have 3 advices posted.");
+      return false;
+    }
+
     const docRef = await addDoc(collection(db, "advice"), data);
     console.log("Document written with ID: ", docRef.id);
     return true; // success
