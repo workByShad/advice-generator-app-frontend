@@ -1,6 +1,7 @@
 import { auth } from "@/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
@@ -36,6 +37,36 @@ export const createNewUser = async (
     const errorMessage = error.message;
 
     console.error(`Error [${errorCode}]: ${errorMessage}`);
+  }
+};
+
+// CREATE
+export const updateUsername = async (
+  e: React.FormEvent<HTMLFormElement>
+): Promise<boolean> => {
+  e.preventDefault();
+
+  const form = e.target as HTMLFormElement;
+
+  try {
+    const user = auth.currentUser;
+
+    if (user == null) {
+      return false;
+    }
+
+    // Update user profile to set the display name (username)
+    await updateProfile(user, {
+      displayName: form.username.value,
+    });
+
+    console.log("Profile updated!");
+
+    return true;
+  } catch (error: any) {
+    console.error(error.message);
+
+    return false;
   }
 };
 
@@ -104,6 +135,34 @@ export const resetPasswordEmail = async (
 
     console.log("Password reset email sent!");
     return true;
+  } catch (error: any) {
+    console.error(error.message);
+    return false;
+  }
+};
+
+// DELETE ACCOUNT
+export const deleteAccount = async (
+  e: React.FormEvent<HTMLFormElement>
+): Promise<boolean> => {
+  e.preventDefault();
+
+  const form = e.target as HTMLFormElement;
+
+  try {
+    const user = auth.currentUser;
+
+    if (user == null) {
+      return false;
+    }
+
+    if (user.email == form.email.value) {
+      await deleteUser(user);
+
+      return true;
+    } else {
+      return false;
+    }
   } catch (error: any) {
     console.error(error.message);
     return false;

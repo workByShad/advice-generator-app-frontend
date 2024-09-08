@@ -25,7 +25,9 @@ export default function Contribute(): React.ReactElement {
     if (result) {
       setModalMessage("Advice submitted successfully!");
     } else {
-      setModalMessage("Error submitting advice.");
+      setModalMessage(
+        "Error submitting advice. Users are limited to 3 advices."
+      );
     }
 
     setIsModalVisible(true);

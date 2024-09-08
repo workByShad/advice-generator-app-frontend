@@ -2,10 +2,10 @@
 import Card from "@/components/Card";
 import Form from "@/components/Form";
 import SubmissionModal from "@/components/SubmissionModal";
-import { resetPasswordEmail } from "@/utils/authUtils";
+import { updateUsername } from "@/utils/authUtils";
 import { useState } from "react";
 
-export default function Reset(): React.ReactElement {
+export default function ResetUsername(): React.ReactElement {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
@@ -15,11 +15,11 @@ export default function Reset(): React.ReactElement {
       (document.activeElement as HTMLElement).blur();
     }
 
-    const result = await resetPasswordEmail(e);
+    const result = await updateUsername(e);
     if (result) {
-      setModalMessage("Password reset email sent!");
+      setModalMessage("Username updated!");
     } else {
-      setModalMessage("Error sending reset email.");
+      setModalMessage("Error updating username.");
     }
 
     setIsModalVisible(true);
@@ -27,7 +27,7 @@ export default function Reset(): React.ReactElement {
     setTimeout(() => {
       setIsModalVisible(false);
 
-      (document.getElementById("email") as HTMLTextAreaElement).value = "";
+      (document.getElementById("username") as HTMLTextAreaElement).value = "";
     }, 2000);
   };
 
@@ -35,12 +35,13 @@ export default function Reset(): React.ReactElement {
     <main>
       <Card>
         <Form handler={handleSubmit}>
-          <label htmlFor="email" className="text-gray-200 text-xl">
-            Enter your email:
+          <label htmlFor="username" className="text-gray-200 text-xl">
+            Enter your new username:
           </label>
           <input
             type="text"
-            id="email"
+            id="username"
+            name="username"
             className="rounded-lg w-[75%] h-[20%] p-2"
             maxLength={30}
           />

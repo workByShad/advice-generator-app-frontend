@@ -38,7 +38,7 @@ const Login: React.FC<FormProps> = ({ toggle }) => {
           />
         </Form>
 
-        <Link href="/reset" className="text-gray-200 text-sm">
+        <Link href="/resetPassword" className="text-gray-200 text-sm">
           Reset Password?
         </Link>
       </div>
