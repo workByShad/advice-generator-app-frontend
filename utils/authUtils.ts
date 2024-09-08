@@ -1,6 +1,7 @@
 import { auth } from "@/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -75,10 +76,7 @@ export const logInUser = async (
 
     console.log("User logged in:", user);
   } catch (error: any) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-
-    console.error(`Error [${errorCode}]: ${errorMessage}`);
+    console.error(error.message);
   }
 };
 
@@ -90,5 +88,24 @@ export const signOutUser = async (): Promise<void> => {
     console.log("sign out successful.");
   } catch (error) {
     console.log(`sign out failed: ${error}`);
+  }
+};
+
+// PASSWORD RESET
+export const resetPasswordEmail = async (
+  e: React.FormEvent<HTMLFormElement>
+): Promise<boolean> => {
+  e.preventDefault();
+
+  const form = e.target as HTMLFormElement;
+
+  try {
+    await sendPasswordResetEmail(auth, form.email.value);
+
+    console.log("Password reset email sent!");
+    return true;
+  } catch (error: any) {
+    console.error(error.message);
+    return false;
   }
 };

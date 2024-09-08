@@ -1,6 +1,7 @@
 "use client";
 import Card from "@/components/Card";
 import useFetchUser from "@/hooks/useFetchUser";
+import Link from "next/link";
 
 export default function Profile(): React.ReactElement {
   const curUser = useFetchUser();
@@ -15,7 +16,9 @@ export default function Profile(): React.ReactElement {
               Username: {curUser.displayName}
             </p>
             <p className="text-gray-200 text-lg">Email: {curUser.email}</p>
-            <p className="text-gray-200 text-lg">User ID: {curUser.uid}</p>
+            <Link href="/reset" className="text-gray-200 text-lg">
+              Reset Password?
+            </Link>
           </div>
         </Card>
       </main>

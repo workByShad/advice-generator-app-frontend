@@ -29,7 +29,7 @@ const Register: React.FC<FormProps> = ({ toggle }) => {
           name="email"
           placeholder="Email"
           required
-          maxLength={20}
+          maxLength={30}
           size={15}
           className="w-[50%] rounded-md p-2"
         />

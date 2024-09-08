@@ -2,6 +2,7 @@
 import Card from "@/components/Card";
 import Form from "@/components/Form";
 import { logInUser } from "@/utils/authUtils";
+import Link from "next/link";
 
 interface FormProps {
   toggle: () => void;
@@ -20,7 +21,7 @@ const Login: React.FC<FormProps> = ({ toggle }) => {
             name="email"
             placeholder="Email"
             required
-            maxLength={20}
+            maxLength={30}
             size={15}
             className="w-[50%] rounded-md p-2"
           />
@@ -36,7 +37,10 @@ const Login: React.FC<FormProps> = ({ toggle }) => {
             className="w-[50%] rounded-md p-2"
           />
         </Form>
-        <p className="text-gray-200 text-sm">Reset Password?</p>
+
+        <Link href="/reset" className="text-gray-200 text-sm">
+          Reset Password?
+        </Link>
       </div>
     </Card>
   );
