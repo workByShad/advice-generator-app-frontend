@@ -29,7 +29,7 @@ Users can:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://advice-generator-app-frontend.vercel.app/)
+- Live Site URL: [Here](https://advice-generator-app-frontend.vercel.app/)
 
 ## My process
 
